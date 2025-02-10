@@ -255,6 +255,70 @@ public class List_lvl2 {
 		return a1.getNext();
 	}
 
+
+	//מחזירה אורך סדרה "עולה חלש" ארוכה ביותר ברשימה (כל ערך >= הקודם)
+	public static int exe6(Node<Integer>l) {
+		int count=0;
+		int max=0;
+		while(l.getNext()!=null) {
+			if(l.getValue()>l.getNext().getValue()) {
+				if(count>max) {
+					max=count;
+				}
+				count=0;
+			}
+			
+			else {
+				count++;
+			}
+			l=l.getNext();
+		}
+		return max;
+		
+	}
+	//מדפיסה סדרה "עולה חלש" ארוכה ביותר ברשימה (לא מחזירה כלום)
+
+	public static void exe7(Node<Integer>l1) {
+		Node<Integer>head= l1;
+		Node<Integer>maxpointer=head;
+		Node<Integer>startmax=head;
+		Node<Integer>startcurr=head
+		int counter=1;
+		int max=0;
+		
+		while(head.getNext()!=null) {
+			if(head.getNext().getValue()>=head.getValue()) {
+				counter++;
+				head=head.getNext();
+			}
+			else {
+				if(counter>max) {
+					max=counter;
+					startmax=startcurr;
+				}
+				counter=1;
+				head=head.getNext();
+				startcurr=head;
+			}
+		}
+		if(counter>max) {
+			max=counter;
+			startmax=startcurr;
+		}
+		
+		Node<Integer>temp=startmax;
+		for(int i=0;i<max;i++) {
+			System.out.println(temp.getValue()+" ");
+			System.out.println();
+			temp=temp.getNext();
+		}
+		
+		
+		
+	}
+	
+	
+
 	public static void main(String[] args) {
 		//exe47-------------------
 		int[]a1= {1,4};
